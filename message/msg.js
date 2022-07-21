@@ -58,7 +58,7 @@ module.exports = async(conn, msg, m, setting, store, welcome) => {
 		if (msg.isBaileys) return
 		const jam = moment.tz('asia/jakarta').format('HH:mm:ss')
 		let dt = moment(Date.now()).tz('Asia/Jakarta').locale('id').format('a')
-		const ucapanWaktu = "Selamat "+dt.charAt(0).toUpperCase() + dt.slice(1)
+		const ucapanWaktu = "Hi "+dt.charAt(0).toUpperCase() + dt.slice(1)
 		const content = JSON.stringify(msg.message)
 		const from = msg.key.remoteJid
 		const chats = (type === 'conversation' && msg.message.conversation) ? msg.message.conversation : (type === 'imageMessage') && msg.message.imageMessage.caption ? msg.message.imageMessage.caption : (type === 'videoMessage') && msg.message.videoMessage.caption ? msg.message.videoMessage.caption : (type === 'extendedTextMessage') && msg.message.extendedTextMessage.text ? msg.message.extendedTextMessage.text : (type === 'buttonsResponseMessage') && quotedMsg.fromMe && msg.message.buttonsResponseMessage.selectedButtonId ? msg.message.buttonsResponseMessage.selectedButtonId : (type === 'templateButtonReplyMessage') && quotedMsg.fromMe && msg.message.templateButtonReplyMessage.selectedId ? msg.message.templateButtonReplyMessage.selectedId : (type === 'messageContextInfo') ? (msg.message.buttonsResponseMessage?.selectedButtonId || msg.message.listResponseMessage?.singleSelectReply.selectedRowId) : (type == 'listResponseMessage') && quotedMsg.fromMe && msg.message.listResponseMessage.singleSelectReply.selectedRowId ? msg.message.listResponseMessage.singleSelectReply.selectedRowId : ""
